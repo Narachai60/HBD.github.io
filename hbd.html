@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เซอร์ไพร์สำหรับคนพิเศษ 💙</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Kanit', sans-serif;
+            background: linear-gradient(45deg, #0f4c75, #3282b8, #bbe1fa, #e3f2fd);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Magic Particles */
+        .magic-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #ffffff, #87ceeb);
+            border-radius: 50%;
+            animation: sparkle 3s infinite ease-in-out;
+            box-shadow: 0 0 10px #ffffff;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+        
+        /* Floating Hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: floatHeart 8s infinite linear;
+            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.7));
+        }
+        
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+        
+        /* Aurora Effect */
+        .aurora {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(135, 206, 235, 0.1), 
+                rgba(255, 105, 180, 0.1), 
+                rgba(147, 112, 219, 0.1), 
+                transparent);
+            animation: aurora 10s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes aurora {
+            0%, 100% { transform: translateX(-100%) skewX(-10deg); }
+            50% { transform: translateX(100%) skewX(10deg); }
+        }
+        
+        .step {
+            display: none;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .step.active {
+            display: flex;
+            animation: materialIn 1s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        @keyframes materialIn {
+            0% { 
+                opacity: 0; 
+                transform: translateY(50px) scale(0.9); 
+                filter: blur(5px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+                filter: blur(0);
+            }
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fab1a0);
+            background-size: 400% 400%;
+            animation: gradientBorder 4s ease infinite;
+            border-radius: 32px;
+            z-index: -1;
+        }
+        
+        @keyframes gradientBorder {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        h1, h2 {
+            background: linear-gradient(45deg, #4682B4, #87CEEB, #FF69B4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: textShine 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes textShine {
+            0% { filter: brightness(1) contrast(1); }
+            100% { filter: brightness(1.2) contrast(1.1); }
+        }
+        
+        h1 { font-size: 3em; font-weight: 700; }
+        h2 { font-size: 2.2em; font-weight: 600; }
+        
+        /* Cat Images with SVG */
+        .cat-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px;
+        }
+        
+        .cat-svg {
+            width: 120px;
+            height: 120px;
+            animation: floatBounce 3s ease-in-out infinite;
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.3));
+            transition: all 0.3s ease;
+        }
+        
+        .cat-svg:hover {
+            transform: scale(1.2) rotate(10deg);
+            animation-play-state: paused;
+        }
+        
+        @keyframes floatBounce {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            25% { transform: translateY(-15px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+            75% { transform: translateY(-20px) rotate(0deg); }
+        }
+        
+        .password-container {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .password-input {
+            font-size: 28px;
+            padding: 20px;
+            border: none;
+            border-radius: 20px;
+            text-align: center;
+            width: 250px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: #2c3e50;
+            font-family: 'Kanit', sans-serif;
+            font-weight: 600;
+            letter-spacing: 8px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.2),
+                inset 0 2px 10px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .password-input:focus {
+            outline: none;
+            transform: scale(1.05);
+            box-shadow: 
+                0 15px 40px rgba(70, 130, 180, 0.4),
+                inset 0 2px 10px rgba(255, 255, 255, 0.4);
+        }
+        
+        .password-input::placeholder {
+            color: rgba(44, 62, 80, 0.6);
+            letter-spacing: 4px;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 15px;
+            font-family: 'Kanit', sans-serif;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.6);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .loading-animation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        
+        .loading-cat {
+            width: 100px;
+            height: 100px;
+            animation: catRun 2s infinite ease-in-out;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+        
+        @keyframes catRun {
+            0% { transform: translateX(-150px) scaleX(1); }
+            45% { transform: translateX(0px) scaleX(1); }
+            55% { transform: translateX(0px) scaleX(-1); }
+            100% { transform: translateX(150px) scaleX(-1); }
+        }
+        
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            perspective: 1000px;
+        }
+        
+        .memory-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transform-style: preserve-3d;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-15px) rotateX(10deg) rotateY(10deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .memory-image {
+            width: 100%;
+            height: 150px;
+            border-radius: 15px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .memory-card:hover .memory-image {
+            transform: scale(1.1);
+        }
+        
+        .fun-fact {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 5px solid transparent;
+            border-image: linear-gradient(45deg, #4682B4, #87CEEB, #FF69B4) 1;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .fun-fact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(70, 130, 180, 0.1), rgba(135, 206, 235, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .fun-fact:hover::before {
+            opacity: 1;
+        }
+        
+        .fun-fact:hover {
+            transform: translateX(10px);
+        }
+        
+        .final-card {
+            background: rgba(255, 240, 245, 0.2);
+            backdrop-filter: blur(25px);
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #FF69B4, #87CEEB, #DDA0DD) 1;
+            animation: cardPulse 3s ease-in-out infinite alternate;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .final-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.1), transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes cardPulse {
+            0% { 
+                box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+                transform: scale(1);
+            }
+            100% { 
+                box-shadow: 0 20px 60px rgba(255, 105, 180, 0.6);
+                transform: scale(1.02);
+            }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .cat-parade {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .parade-cat {
+            animation: paradeFloat 2s ease-in-out infinite;
+            animation-delay: calc(var(--delay) * 0.3s);
+        }
+        
+        @keyframes paradeFloat {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        .error-msg {
+            color: #ff6b6b;
+            margin: 15px 0;
+            font-weight: 600;
+            font-size: 18px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            animation: errorShake 0.5s ease-in-out;
+        }
+        
+        @keyframes errorShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #4682B4;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 1s step-end infinite;
+            font-size: 20px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #4682B4; }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .container { 
+                padding: 30px 20px; 
+                margin: 10px; 
+                border-radius: 25px;
+            }
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            .password-input { 
+                width: 200px; 
+                font-size: 24px; 
+                letter-spacing: 6px;
+            }
+            .cat-svg { width: 100px; height: 100px; }
+            .memory-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* Sparkle Effect */
+        .sparkle-container {
+            position: relative;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ffffff, #87ceeb);
+            border-radius: 50%;
+            animation: sparkleEffect 2s infinite ease-in-out;
+            pointer-events: none;
+        }
+        
+        @keyframes sparkleEffect {
+            0%, 100% { 
+                opacity: 0; 
+                transform: scale(0) rotate(0deg); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1) rotate(180deg); 
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Aurora Effect -->
+    <div class="aurora"></div>
+    
+    <!-- Magic Particles -->
+    <div class="magic-particles" id="magicParticles"></div>
+    
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Step 1: Password -->
+    <div class="step active" id="step1">
+        <div class="container sparkle-container">
+            <h1>🔐 เซอร์ไพร์มหัศจรรย์</h1>
+            <div class="cat-container">
+                <svg class="cat-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Cat Body -->
+                    <ellipse cx="100" cy="130" rx="60" ry="50" fill="#87CEEB" opacity="0.9"/>
+                    <!-- Cat Head -->
+                    <circle cx="100" cy="80" r="45" fill="#B0E0E6" opacity="0.9"/>
+                    <!-- Cat Ears -->
+                    <polygon points="70,50 85,25 95,50" fill="#87CEEB"/>
+                    <polygon points="105,50 115,25 130,50" fill="#87CEEB"/>
+                    <!-- Inner Ears -->
+                    <polygon points="75,45 82,35 88,45" fill="#FFB6C1"/>
+                    <polygon points="112,45 118,35 125,45" fill="#FFB6C1"/>
+                    <!-- Eyes -->
+                    <ellipse cx="85" cy="75" rx="8" ry="12" fill="#4682B4"/>
+                    <ellipse cx="115" cy="75" rx="8" ry="12" fill="#4682B4"/>
+                    <ellipse cx="85" cy="73" rx="3" ry="4" fill="#FFFFFF"/>
+                    <ellipse cx="115" cy="73" rx="3" ry="4" fill="#FFFFFF"/>
+                    <!-- Nose -->
+                    <polygon points="100,85 95,92 105,92" fill="#FF69B4"/>
+                    <!-- Mouth -->
+                    <path d="M 100 92 Q 95 98 90 95" stroke="#4682B4" stroke-width="2" fill="none"/>
+                    <path d="M 100 92 Q 105 98 110 95" stroke="#4682B4" stroke-width="2" fill="none"/>
+                    <!-- Whiskers -->
+                    <line x1="60" y1="80" x2="80" y2="78" stroke="#4682B4" stroke-width="2"/>
+                    <line x1="60" y1="90" x2="80" y2="88" stroke="#4682B4" stroke-width="2"/>
+                    <line x1="120" y1="78" x2="140" y2="80" stroke="#4682B4" stroke-width="2"/>
+                    <line x1="120" y1="88" x2="140" y2="90" stroke="#4682B4" stroke-width="2"/>
+                    <!-- Tail -->
+                    <ellipse cx="45" cy="140" rx="15" ry="35" fill="#87CEEB" opacity="0.8" transform="rotate(-30 45 140)"/>
+                </svg>
+            </div>
+            <p class="typewriter">ป้อนรหัสลับเพื่อเข้าสู่โลกแห่งความมหัศจรรย์ 💫</p>
+            <div class="password-container">
+                <input type="password" class="password-input" id="passwordInput" placeholder="••••" maxlength="4">
+            </div>
+            <button class="btn" onclick="checkPassword()">✨ เปิดประตูสู่ความมหัศจรรย์ ✨</button>
+            <div class="error-msg" id="errorMsg"></div>
+        </div>
+    </div>
+
+    <!-- Step 2: Loading -->
+    <div class="step" id="step2">
+        <div class="container">
+            <h2>🌟 กำลังสร้างมนต์เสน่ห์...</h2>
+            <div class="loading-animation">
+                <svg class="loading-cat" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="100" cy="130" rx="50" ry="40" fill="#4ECDC4"/>
+                    <circle cx="100" cy="80" r="40" fill="#45B7D1"/>
+                    <polygon points="75,45 85,25 95,45" fill="#4ECDC4"/>
+                    <polygon points="105,45 115,25 125,45" fill="#4ECDC4"/>
+                    <ellipse cx="88" cy="75" rx="6" ry="10" fill="#2C3E50"/>
+                    <ellipse cx="112" cy="75" rx="6" ry="10" fill="#2C3E50"/>
+                    <polygon points="100,85 96,90 104,90" fill="#E74C3C"/>
+                    <ellipse cx="50" cy="135" rx="12" ry="30" fill="#4ECDC4" transform="rotate(-20 50 135)"/>
+                </svg>
+            </div>
+            <p style="color: #2c3e50; font-size: 18px; font-weight: 500;">แมวมหัศจรรย์กำลังเตรียมสิ่งพิเศษเพื่อคุณ... 🎭</p>
+        </div>
+    </div>
+
+    <!-- Step 3: Welcome -->
+    <div class="step" id="step3">
+        <div class="container">
+            <h2>💎 ยินดีต้อนรับสู่อาณาจักรแห่งรัก!</h2>
+            <div class="cat-parade">
+                <div class="cat-container parade-cat" style="--delay: 1">
+                    <svg class="cat-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="100" cy="130" rx="55" ry="45" fill="#FF6B9D"/>
+                        <circle cx="100" cy="80" r="42" fill="#FFB3D1"/>
+                        <polygon points="72,48 82,28 92,48" fill="#FF6B9D"/>
+                        <polygon points="108,48 118,28 128,48" fill="#FF6B9D"/>
+                        <ellipse cx="87" cy="75" rx="7" ry="11" fill="#2C3E50"/>
+                        <ellipse cx="113" cy="75" rx="7" ry="11" fill="#2C3E50"/>
+                        <polygon points="100,85 95,91 105,91" fill="#E91E63"/>
+                    </svg>
+                </div>
+                <div class="cat-container parade-cat" style="--delay: 2">
+                    <svg class="cat-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="100" cy="130" rx="55" ry="45" fill="#9B59B6"/>
+                        <circle cx="100" cy="80" r="42" fill="#C8A2C8"/>
+                        <polygon points="72,48 82,28 92,48" fill="#9B59B6"/>
+                        <polygon points="108,48 118,28 128,48" fill="#9B59B6"/>
+                        <ellipse cx="87" cy="75" rx="7" ry="11" fill="#2C3E50"/>
+                        <ellipse cx="113" cy="75" rx="7" ry="11" fill="#2C3E50"/>
+                        <polygon points="100,85 95,91 105,91" fill="#8E44AD"/>
+                    </svg>
+                </div>
+                <div class="cat-container parade-cat" style="--delay: 3">
+                    <svg class="cat-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="100" cy="130" rx="55" ry="45" fill="#3498DB"/>
+                        <circle cx="100" cy="80" r="42" fill="#85C1E9"/>
+                        <polygon points="72,48 82,28 92,48" fill="#3498DB"/>
+                        <polygon points="108,48 118,28 128,48" fill="#3498DB"/>
+                        <ellipse cx="87" cy="75" rx="7" ry="11" fill="#2C3E50"/>
+                        <ellipse cx="113" cy="75" rx="7" ry="11" fill="#2C3E50"/>
+                        <polygon points="100,85 95,91 105,91" fill="#2980B9"/>
+                    </svg>
+                </div>
+            </div>
+            <p style="color: #2c3e50; font-size: 20px; line-height: 1.8; font-weight: 500;">
+                เตรียมพบกับการผจญภัยที่เต็มไปด้วยความรัก ความทรงจำ<br>
+                และเซอร์ไพร์สุดพิเศษที่รอคุณอยู่ 🌈✨
+            </p>
+            <button class="btn" onclick="nextStep()">🚀 เริ่มต้นการผจญภัยแห่งรัก! 🚀</button>
+        </div>
+    </div>
+
+    <!-- Step 4: Memory Lane -->
+    <div class="step" id="step4">
+        <div class="container" style="max-width: 800px;">
+            <h2>📸 ห้องเก็บความทรงจำแสนหวาน</h2>
+            <div class="memory-grid">
+                <div class="memory-card">
+                    <svg class="memory-image" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="cafe" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8B4513"/>
+                                <stop offset="100%" stop-color="#DEB887"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="300" height="200" fill="url(#cafe)"/>
+                        <rect x="50" y="80" width="80" height="60" fill="#654321" rx="5"/>
+                        <rect x="170" y="80" width="80" height="60" fill="#654321" rx="5"/>
+                        <circle cx="90" cy="110" r="15" fill="#87CEEB"/>
+                        <circle cx="210" cy="110" r="15" fill="#FF69B4"/>
+                        <ellipse cx="150" cy="60" rx="25" ry="15" fill="#FFB6C1"/>
+                        <text x="150" y="170" text-anchor="middle" fill="#2C3E50" font-size="14" font-family="Kanit">🐱 เดทแรกที่ร้านแมว</text>
+                    </svg>
+                    <p style="margin-top: 15px; color: #2c3e50; font-weight: 500;">วันที่เราหลงรักแมวด้วยกัน 🐾</p>
+                </div>
+                <div class="memory-card">
+                    <svg class="memory-image" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="beach" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#87CEEB"/>
+                                <stop offset="50%" stop-color="#F0E68C"/>
+                                <stop offset="100%" stop-color="#DDA0DD"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="300" height="200" fill="url(#beach)"/>
+                        <circle cx="70" cy="50" r="20" fill="#FFEB3B"/>
+                        <path d="M 50 150 Q 150 130 250 150" stroke="#4682B4" stroke-width="3" fill="none"/>
+                        <polygon points="100,160 110,140 120,160" fill="#FF69B4"/>
+                        <polygon points="180,160 190,140 200,160" fill="#87CEEB"/>
+                        <text x="150" y="185" text-anchor="middle" fill="#2C3E50" font-size="14" font-family="Kanit">🌊 ทริปริมทะเลสุดโรแมนติก</text>
+                    </svg>
+                    <p style="margin-top: 15px; color: #2c3e50; font-weight: 500;">วันที่เราสัญญารักกัน 🌊</p>
+                </div>
+            </div>
+            <button class="btn" onclick="nextStep()">✨ ดูข้อมูลน่ารักๆ เกี่ยวกับเธอ ✨</button>
+        </div>
+    </div>
+
+    <!-- Step 5: Fun Facts -->
+    <div class="step" id="step5">
+        <div class="container" style="max-width: 700px;">
+            <h2>🌟 ข้อมูลมหัศจรรย์เกี่ยวกับเธอ</h2>
+            <div class="cat-container">
+                <svg class="cat-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="magicCat" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FF6B9D"/>
+                            <stop offset="50%" stop-color="#9B59B6"/>
+                            <stop offset="100%" stop-color="#3498DB"/>
+                        </linearGradient>
+                    </defs>
+                    <ellipse cx="100" cy="130" rx="60" ry="50" fill="url(#magicCat)" opacity="0.9"/>
+                    <circle cx="100" cy="80" r="45" fill="url(#magicCat)" opacity="0.8"/>
+                    <polygon points="70,50 85,25 95,50" fill="url(#magicCat)"/>
+                    <polygon points="105,50 115,25 130,50" fill="url(#magicCat)"/>
+                    <ellipse cx="85" cy="75" rx="8" ry="12" fill="#FFFFFF"/>
+                    <ellipse cx="115" cy="75" rx="8" ry="12" fill="#FFFFFF"/>
+                    <ellipse cx="85" cy="75" rx="4" ry="6" fill="#2C3E50"/>
+                    <ellipse cx="115" cy="75" rx="4" ry="6" fill="#2C3E50"/>
+                    <polygon points="100,85 95,92 105,92" fill="#E91E63"/>
+                    <path d="M 100 92 Q 95 98 90 95" stroke="#2C3E50" stroke-width="2" fill="none"/>
+                    <path d="M 100 92 Q 105 98 110 95" stroke="#2C3E50" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            
+            <div class="fun-fact">
+                <strong>🌟 พลังพิเศษของเธอ:</strong><br>
+                สามารถทำให้ทุกคนรอบตัวยิ้มได้ด้วยแค่การมองตา ✨
+            </div>
+            
+            <div class="fun-fact">
+                <strong>💎 เสน่ห์ที่เธอไม่รู้ตัว:</strong><br>
+                หัวเราะเสียงใสเหมือนเสียงระฆังแห่งความสุข 🔔
+            </div>
+            
+            <div class="fun-fact">
+                <strong>🌈 สีที่เข้ากับเธอที่สุด:</strong><br>
+                สีฟ้าใสราวกับท้องฟ้าในวันที่ไม่มีเมฆ ☁️
+            </div>
+            
+            <div class="fun-fact">
+                <strong>🐱 ทำไมเธอเหมือนแมว:</strong><br>
+                น่ารัก อิสระ และทำให้ใครๆ อยากอยู่ใกล้ 🥰
+            </div>
+            
+            <div class="fun-fact">
+                <strong>⭐ ความสามารถลับของเธอ:</strong><br>
+                เปลี่ยนวันที่แย่ให้กลายเป็นวันที่ดีที่สุด 🌻
+            </div>
+            
+            <button class="btn" onclick="nextStep()">💌 เปิดจดหมายรักสุดพิเศษ 💌</button>
+        </div>
+    </div>
+
+    <!-- Step 6: Final Card -->
+    <div class="step" id="step6">
+        <div class="container final-card" style="max-width: 700px;">
+            <h2>💌 จดหมายจากหัวใจที่รักเธอมากที่สุด</h2>
+            <div class="cat-container">
+                <svg class="cat-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="loveCat" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FF69B4"/>
+                            <stop offset="50%" stop-color="#FFB6C1"/>
+                            <stop offset="100%" stop-color="#FFC0CB"/>
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge> 
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <ellipse cx="100" cy="130" rx="65" ry="55" fill="url(#loveCat)" filter="url(#glow)"/>
+                    <circle cx="100" cy="80" r="50" fill="url(#loveCat)" filter="url(#glow)"/>
+                    <polygon points="65,45 80,20 90,45" fill="url(#loveCat)"/>
+                    <polygon points="110,45 120,20 135,45" fill="url(#loveCat)"/>
+                    <polygon points="72,40 78,30 84,40" fill="#FFE4E1"/>
+                    <polygon points="116,40 122,30 128,40" fill="#FFE4E1"/>
+                    <ellipse cx="85" cy="75" rx="8" ry="12" fill="#2C3E50"/>
+                    <ellipse cx="115" cy="75" rx="8" ry="12" fill="#2C3E50"/>
+                    <ellipse cx="87" cy="73" rx="3" ry="4" fill="#FFFFFF"/>
+                    <ellipse cx="117" cy="73" rx="3" ry="4" fill="#FFFFFF"/>
+                    <polygon points="100,88 95,95 105,95" fill="#E91E63"/>
+                    <path d="M 100 95 Q 90 105 85 100" stroke="#2C3E50" stroke-width="2" fill="none"/>
+                    <path d="M 100 95 Q 110 105 115 100" stroke="#2C3E50" stroke-width="2" fill="none"/>
+                    <text x="100" y="45" text-anchor="middle" fill="#E91E63" font-size="20">💕</text>
+                </svg>
+            </div>
+            
+            <div style="background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(15px); padding: 35px; border-radius: 25px; margin: 25px 0; line-height: 2; color: #2c3e50; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -10px; right: -10px; font-size: 60px; opacity: 0.1;">💙</div>
+                <div style="position: absolute; bottom: -10px; left: -10px; font-size: 60px; opacity: 0.1;">✨</div>
+                
+                <p style="font-size: 22px; margin-bottom: 20px; font-weight: 600; color: #E91E63;">
+                    💙 สำหรับคนที่พิเศษที่สุดในโลก
+                </p>
+                
+                <p style="margin-bottom: 20px; font-size: 18px;">
+                    เธอรู้มั้ยว่าเธอมีความหมายกับฉันมากแค่ไหน? 
+                    เหมือนดวงดาวที่ส่องทางให้ฉันในคืนที่มืดมิด ⭐
+                </p>
+                
+                <p style="margin-bottom: 20px; font-size: 18px;">
+                    เหมือนแมวน้อยที่น่ารัก เธอทำให้ทุกวันของฉัน
+                    เต็มไปด้วยความอบอุ่นและรอยยิ้ม 😊
+                </p>
+                
+                <p style="margin-bottom: 20px; font-size: 18px;">
+                    ขอบคุณที่เป็นแสงสว่างในชีวิต 🌟<br>
+                    ขอบคุณที่ทำให้ฉันเชื่อในความรักแท้ 💕<br>
+                    ขอบคุณที่เป็นเธอ... คนที่สมบูรณ์แบบ ✨
+                </p>
+                
+                <p style="font-weight: 700; color: #E91E63; font-size: 24px; text-align: center; margin-top: 30px;">
+                    รักเธอมากกว่าดวงดาวบนฟ้า 🌌<br>
+                    รักเธอมากกว่าคำว่า "มาก" 💖<br>
+                    รักเธอตลอดไป... ตลอดกาล 💙
+                </p>
+            </div>
+            
+            <div class="cat-parade">
+                <div class="cat-container parade-cat" style="--delay: 1">
+                    <svg width="90" height="90" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="100" cy="130" rx="50" ry="40" fill="#FFB6C1"/>
+                        <circle cx="100" cy="80" r="35" fill="#FFC0CB"/>
+                        <polygon points="75,55 82,35 92,55" fill="#FFB6C1"/>
+                        <polygon points="108,55 118,35 125,55" fill="#FFB6C1"/>
+                        <text x="100" y="50" text-anchor="middle" font-size="16">💕</text>
+                        <ellipse cx="90" cy="75" rx="5" ry="8" fill="#2C3E50"/>
+                        <ellipse cx="110" cy="75" rx="5" ry="8" fill="#2C3E50"/>
+                        <path d="M 100 88 Q 95 95 90 92" stroke="#E91E63" stroke-width="2" fill="none"/>
+                        <path d="M 100 88 Q 105 95 110 92" stroke="#E91E63" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <div class="cat-container parade-cat" style="--delay: 2">
+                    <svg width="90" height="90" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="100" cy="130" rx="50" ry="40" fill="#DDA0DD"/>
+                        <circle cx="100" cy="80" r="35" fill="#E6E6FA"/>
+                        <polygon points="75,55 82,35 92,55" fill="#DDA0DD"/>
+                        <polygon points="108,55 118,35 125,55" fill="#DDA0DD"/>
+                        <text x="100" y="50" text-anchor="middle" font-size="16">✨</text>
+                        <ellipse cx="90" cy="75" rx="5" ry="8" fill="#2C3E50"/>
+                        <ellipse cx="110" cy="75" rx="5" ry="8" fill="#2C3E50"/>
+                        <path d="M 100 88 Q 95 95 90 92" stroke="#9B59B6" stroke-width="2" fill="none"/>
+                        <path d="M 100 88 Q 105 95 110 92" stroke="#9B59B6" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <div class="cat-container parade-cat" style="--delay: 3">
+                    <svg width="90" height="90" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="100" cy="130" rx="50" ry="40" fill="#87CEEB"/>
+                        <circle cx="100" cy="80" r="35" fill="#B0E0E6"/>
+                        <polygon points="75,55 82,35 92,55" fill="#87CEEB"/>
+                        <polygon points="108,55 118,35 125,55" fill="#87CEEB"/>
+                        <text x="100" y="50" text-anchor="middle" font-size="16">💙</text>
+                        <ellipse cx="90" cy="75" rx="5" ry="8" fill="#2C3E50"/>
+                        <ellipse cx="110" cy="75" rx="5" ry="8" fill="#2C3E50"/>
+                        <path d="M 100 88 Q 95 95 90 92" stroke="#4682B4" stroke-width="2" fill="none"/>
+                        <path d="M 100 88 Q 105 95 110 92" stroke="#4682B4" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <button class="btn" onclick="restartJourney()" style="background: linear-gradient(45deg, #FF69B4, #87CEEB, #DDA0DD); margin-top: 30px;">
+                🔄 เริ่มต้นความมหัศจรรย์ใหม่ 🔄
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
+
+        // Enhanced Magic Particles
+        function createMagicParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 3 + 's';
+            particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            
+            const colors = ['#ffffff', '#87ceeb', '#ff69b4', '#dda0dd', '#98fb98'];
+            particle.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]}, transparent)`;
+            
+            document.getElementById('magicParticles').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 5000);
+        }
+
+        // Enhanced Floating Hearts
+        function createFloatingHeart() {
+            const hearts = ['💙', '💖', '💕', '💗', '✨', '🌟', '⭐', '🎀'];
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            
+            document.getElementById('floatingHearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        // Create sparkles around elements
+        function createSparkles(element) {
+            for(let i = 0; i < 8; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = i * 0.2 + 's';
+                element.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 2000);
+            }
+        }
+
+        // Create continuous effects
+        setInterval(createMagicParticle, 300);
+        setInterval(createFloatingHeart, 1500);
+
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const container = document.querySelector('#step1 .container');
+            
+            if (password === '0202') {
+                errorMsg.textContent = '';
+                createSparkles(container);
+                
+                // Success animation
+                container.style.transform = 'scale(1.05)';
+                container.style.filter = 'brightness(1.2)';
+                
+                setTimeout(() => {
+                    container.style.transform = '';
+                    container.style.filter = '';
+                    nextStep();
+                }, 800);
+                
+            } else {
+                errorMsg.textContent = '❌ รหัสมหัศจรรย์ไม่ถูกต้อง ลองอีกครั้งนะ!';
+                document.getElementById('passwordInput').value = '';
+                
+                // Enhanced error animation
+                container.style.animation = 'errorShake 0.6s ease-in-out';
+                container.style.filter = 'hue-rotate(320deg)';
+                
+                setTimeout(() => {
+                    container.style.animation = '';
+                    container.style.filter = '';
+                }, 600);
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                const currentElement = document.getElementById(`step${currentStep}`);
+                const nextElement = document.getElementById(`step${currentStep + 1}`);
+                
+                // Exit animation
+                currentElement.style.transform = 'translateY(-50px) scale(0.9)';
+                currentElement.style.opacity = '0';
+                currentElement.style.filter = 'blur(10px)';
+                
+                setTimeout(() => {
+                    currentElement.classList.remove('active');
+                    currentStep++;
+                    
+                    if (currentStep === 2) {
+                        // Special loading step
+                        nextElement.classList.add('active');
+                        const container = nextElement.querySelector('.container');
+                        createSparkles(container);
+                        
+                        setTimeout(() => {
+                            nextElement.classList.remove('active');
+                            currentStep++;
+                            document.getElementById(`step${currentStep}`).classList.add('active');
+                            createSparkles(document.querySelector(`#step${currentStep} .container`));
+                        }, 3000);
+                    } else {
+                        nextElement.classList.add('active');
+                        createSparkles(nextElement.querySelector('.container'));
+                    }
+                }, 300);
+            }
+        }
+
+        function restartJourney() {
+            const currentElement = document.getElementById(`step${currentStep}`);
+            
+            // Exit animation
+            currentElement.style.transform = 'rotateY(90deg) scale(0.8)';
+            currentElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentElement.classList.remove('active');
+                currentElement.style.transform = '';
+                currentElement.style.opacity = '';
+                
+                currentStep = 1;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('errorMsg').textContent = '';
+                
+                // Reset sparkles
+                const container = document.querySelector('#step1 .container');
+                createSparkles(container);
+            }, 500);
+        }
+
+        // Enhanced keyboard support
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // Mouse follow effect for containers
+        document.addEventListener('mousemove', function(e) {
+            const containers = document.querySelectorAll('.container');
+            containers.forEach(container => {
+                if (container.closest('.step').classList.contains('active')) {
+                    const rect = container.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    
+                    container.style.transform = `perspective(1000px) rotateX(${y / 50}deg) rotateY(${x / 50}deg)`;
+                }
+            });
+        });
+
+        // Initialize effects
+        createMagicParticle();
+        createFloatingHeart();
+        
+        // Add sparkles to initial container
+        setTimeout(() => {
+            createSparkles(document.querySelector('#step1 .container'));
+        }, 500);
+
+        // Auto-sparkle effect for active containers
+        setInterval(() => {
+            const activeContainer = document.querySelector('.step.active .container');
+            if (activeContainer && Math.random() < 0.3) {
+                createSparkles(activeContainer);
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
+                            <linearGradient id="sunset" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FF7B7B"/>
+                                <stop offset="100%" stop-color="#FFD93D"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="300" height="200" fill="url(#sunset)"/>
+                        <circle cx="250" cy="50" r="25" fill="#FFEB3B"/>
+                        <polygon points="100,120 110,100 120,120" fill="#FF69B4"/>
+                        <polygon points="180,120 190,100 200,120" fill="#4682B4"/>
+                        <text x="150" y="170" text-anchor="middle" fill="#2C3E50" font-size="14" font-family="Kanit">💕 วันแรกที่เราเจอกัน</text>
+                    </svg>
+                    <p style="margin-top: 15px; color: #2c3e50; font-weight: 500;">วันที่หัวใจเต้นแรงที่สุด 💕</p>
+                </div>
+                <div class="memory-card">
+                    <svg class="memory-image" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
